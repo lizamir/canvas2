@@ -1,8 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Content.scss";
+import { Footer } from "../Footer";
+
 export const Content = ({ imgUrl }) => {
   const canvas = useRef(null);
   const demoImg = useRef(null);
+  const dataURL = useRef(null);
   const [degrees, setDegrees] = useState(0);
   const drawRotated = () => {
     const ctx = canvas.current.getContext("2d");
@@ -29,17 +32,28 @@ export const Content = ({ imgUrl }) => {
     setDegrees(degrees + 90);
   };
   useEffect(() => {
-    console.log("rotation change detected...");
+    // console.log("rotation change detected...");
     if (imgUrl && canvas) {
       drawRotated();
     }
+     dataURL.current = canvas.current.toDataURL();
   }, [degrees]);
+
   return (
-    <div>
+    <div className="canvas-container">
       <img className="demo-image" src={imgUrl} ref={demoImg} alt="" />
-      <h1>content</h1>
-      <canvas ref={canvas} width={400} height={400} />
-      <button onClick={onRotate}>Rotate</button>
+      <h1>My image</h1>
+      <canvas
+        className="canvas"
+        ref={canvas}
+        width={400}
+        height={400}
+      ></canvas>{" "}
+      <br />
+      <button className="btn" onClick={onRotate}>
+        Rotate
+      </button>
+      <Footer dataURL={dataURL} />
     </div>
   );
 };

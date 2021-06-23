@@ -1,15 +1,17 @@
 
-import { Component } from 'react'
-
 import './Footer.scss'
 
-export class Footer extends Component {
+export const Footer = ({ dataURL }) => {
 
-    render() {
-        return (
-            <div>
-            <h1>footer</h1>
-            </div>
-        )
+    const onPrintUrl=()=>{
+        console.log(dataURL , 'dataURL');
     }
+
+    
+        return (
+            <footer className="footer">
+              <button className="btn-footer" onClick={onPrintUrl} >Print URL</button>
+            </footer>
+        )
+    
 }

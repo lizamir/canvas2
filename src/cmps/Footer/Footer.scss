@@ -1,1 +1,12 @@
-.footer {}
+.footer {
+    background-color: yellowgreen;
+
+    .btn-footer{
+        width: 100%;
+        background-color: rgb(224, 250, 173);
+        color: rgb(0, 0, 0);
+        padding: 15px 12px;
+        outline: none;
+        border: none;
+    }
+}
